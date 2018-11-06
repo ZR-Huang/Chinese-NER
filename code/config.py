@@ -1,0 +1,23 @@
+class Config():
+    source_path = "../data/source.txt"
+    source_tgt_path = "../data/target.txt"
+    test_path = "../data/test.txt"
+    test_tgt_path = "../data/test_tgt.txt"
+    output_path = "../result/"
+    summary_path = output_path + "summaries"
+    model_output_path = output_path + "checkpoints/"
+    model_path = model_output_path + "model"
+    log_path = output_path + "log.txt"
+    words_vocab = "../data/words_vocab"
+    tags_vocab = "../data/tags_vocab"
+    n_dim = 200
+    hidden_size = 128
+    learning_rate = 0.003
+    learning_rate_decay = 0.9
+    n_epoch = 10
+    batch_size = 64
+    dropout = 0.5
+    train_embeddings = True
+    crf = True
+    max_iter = 10000
+    min_count=1

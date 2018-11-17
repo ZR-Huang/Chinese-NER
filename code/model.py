@@ -199,8 +199,8 @@ class Model(object):
                                                             feed_dict=fd)
 
             if step + 1==1 or (step+1) % 100 == 0 or step+1 == num_batches:
-                self.logger.info("{} epoch {}, step {}, loss: {:.4}, f1: {:.4}, global_step:{}".format(
-                    start_time, epoch+1, step+1, train_loss, self.run_evaluate(sess, dev, vocab_tags, vocab_words)["f1"], step_num_
+                self.logger.info("{} epoch {}, step {}, loss: {:.4}, metrics: {}, global_step:{}".format(
+                    start_time, epoch+1, step+1, train_loss, self.run_evaluate(sess, dev, vocab_tags, vocab_words), step_num_
                 ))
 
             self.file_writer.add_summary(summary, step_num_)
@@ -212,7 +212,7 @@ class Model(object):
         msg = " - ".join(["{} {:04.4f}".format(k, v) for k, v in metrics.items()])
         self.logger.info(msg)
         
-        return metrics["f1"]
+        return metrics["acc"]
 
     
     def run_evaluate(self, sess, test, vocab_tags, vocab_words):
@@ -240,12 +240,7 @@ class Model(object):
         f1 = 2 * p *r /(p+r) if correct_preds > 0 else 0
         acc = np.mean(accs)
               
-        return {"acc":100*acc, "f1":100*f1}
-
-    
-    
-    
-
+        return {"acc":100*acc, "f1":100*f1,"precision":100*p,"recall":100*r}
 
 
         

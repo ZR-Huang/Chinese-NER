@@ -14,7 +14,7 @@ class Config():
     hidden_size = 128
     learning_rate = 0.003
     learning_rate_decay = 0.9
-    n_epoch = 10
+    n_epoch = 50
     batch_size = 64
     dropout = 0.5
     train_embeddings = True
